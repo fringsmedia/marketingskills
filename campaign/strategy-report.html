@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategie-Report — Padel Clothing Club</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #1a6b3c;
+      --green-light: #e8f5ee;
+      --green-mid:   #2e8b57;
+      --gray-50:     #f8f9fa;
+      --gray-100:    #f1f3f5;
+      --gray-200:    #e9ecef;
+      --gray-400:    #adb5bd;
+      --gray-700:    #495057;
+      --gray-900:    #212529;
+      --tof:         #1971c2;
+      --tof-bg:      #dbe4ff;
+      --mof:         #d9480f;
+      --mof-bg:      #ffe8cc;
+      --bof:         #c92a2a;
+      --bof-bg:      #ffe3e3;
+      --sidebar-w:   240px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      display: flex;
+    }
+
+    /* ── SIDEBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: #fff;
+      border-right: 1px solid var(--gray-200);
+      overflow-y: auto;
+      padding: 24px 0 40px;
+      z-index: 100;
+    }
+
+    nav .logo {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid var(--gray-200);
+      margin-bottom: 16px;
+    }
+
+    nav .logo span {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gray-400);
+      margin-bottom: 4px;
+    }
+
+    nav .logo strong {
+      font-size: 14px;
+      color: var(--green);
+    }
+
+    nav ul { list-style: none; }
+
+    nav ul li a {
+      display: block;
+      padding: 7px 20px;
+      font-size: 13px;
+      color: var(--gray-700);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all .15s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--green);
+      border-left-color: var(--green);
+      background: var(--green-light);
+    }
+
+    nav ul li a .num {
+      display: inline-block;
+      width: 20px;
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    /* ── MAIN ── */
+    main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+      flex: 1;
+      padding: 0 0 80px;
+    }
+
+    /* ── HERO / COVER ── */
+    .cover {
+      background: var(--green);
+      color: #fff;
+      padding: 60px 60px 50px;
+    }
+
+    .cover .tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      opacity: .7;
+      margin-bottom: 12px;
+    }
+
+    .cover h1 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .cover .domain {
+      font-size: 14px;
+      opacity: .8;
+      margin-bottom: 28px;
+    }
+
+    .cover .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cover .pill {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 52px 60px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .icon {
+      width: 32px; height: 32px;
+      background: var(--green-light);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    section .section-desc {
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin: 28px 0 10px;
+    }
+
+    section h3:first-of-type { margin-top: 0; }
+
+    p { margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── TABLES ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    thead th {
+      background: var(--gray-100);
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gray-700);
+      border-bottom: 2px solid var(--gray-200);
+    }
+
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+
+    tbody tr:hover td { background: var(--gray-50); }
+
+    /* ── CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .card .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+
+    .card .card-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .card .card-note {
+      font-size: 12px;
+      color: var(--gray-700);
+      margin-top: 4px;
+    }
+
+    /* ── FUNNEL TAGS ── */
+    .tag-tof { display:inline-block; background:var(--tof-bg); color:var(--tof); border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700; }
+    .tag-mof { display:inline-block; background:var(--mof-bg); color:var(--mof); border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700; }
+    .tag-bof { display:inline-block; background:var(--bof-bg); color:var(--bof); border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700; }
+
+    /* ── BLOCKQUOTE / COPY BOX ── */
+    .copy-box {
+      background: var(--gray-100);
+      border-left: 4px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 12px 0;
+      font-style: italic;
+      color: var(--gray-700);
+    }
+
+    .copy-box strong { font-style: normal; }
+
+    /* ── CODE / MONO ── */
+    code {
+      background: var(--gray-100);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    pre {
+      background: var(--gray-900);
+      color: #e9ecef;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 12.5px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      overflow-x: auto;
+      margin: 14px 0;
+      line-height: 1.6;
+    }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; }
+
+    .checklist li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-100);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .checklist li:last-child { border-bottom: none; }
+
+    .checklist li::before {
+      content: '';
+      display: block;
+      width: 18px; height: 18px;
+      border: 2px solid var(--gray-200);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .checklist li .cat {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 3px;
+      padding: 1px 6px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ── FLOW TIMELINE ── */
+    .flow {
+      position: relative;
+      padding-left: 28px;
+      border-left: 2px solid var(--green-light);
+      margin: 16px 0;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 0 0 20px 16px;
+    }
+
+    .flow-step::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 5px;
+      width: 10px; height: 10px;
+      background: var(--green);
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--green);
+    }
+
+    .flow-step .step-timing {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--green);
+      margin-bottom: 2px;
+    }
+
+    .flow-step .step-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .flow-step .step-body {
+      font-size: 13px;
+      color: var(--gray-700);
+    }
+
+    /* ── PILLS / BADGES ── */
+    .badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 2px;
+    }
+
+    .badge-gray {
+      background: var(--gray-100);
+      color: var(--gray-700);
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: var(--green-light);
+      border: 1px solid #b2dfca;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 13.5px;
+      margin: 16px 0;
+    }
+
+    .info-box strong { color: var(--green); }
+
+    /* ── PRINT ── */
+    @media print {
+      nav { display: none; }
+      main { margin-left: 0; }
+      section { padding: 30px 40px; }
+      .cover { padding: 40px; }
+      .copy-box { break-inside: avoid; }
+      table { break-inside: avoid; }
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      main { margin-left: 0; }
+      section { padding: 32px 24px; }
+      .cover { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     SIDEBAR NAVIGATION
+════════════════════════════════════════════ -->
+<nav>
+  <div class="logo">
+    <span>Strategie-Report</span>
+    <strong>Padel Clothing Club</strong>
+  </div>
+  <ul>
+    <li><a href="#summary"><span class="num">01</span>Executive Summary</a></li>
+    <li><a href="#zielgruppe"><span class="num">02</span>Zielgruppe</a></li>
+    <li><a href="#positionierung"><span class="num">03</span>Positionierung</a></li>
+    <li><a href="#website-copy"><span class="num">04</span>Website Copy</a></li>
+    <li><a href="#meta-ads"><span class="num">05</span>Meta Ads</a></li>
+    <li><a href="#email-retention"><span class="num">06</span>E-Mail &amp; Retention</a></li>
+    <li><a href="#tracking"><span class="num">07</span>Tracking &amp; KPIs</a></li>
+    <li><a href="#todos"><span class="num">08</span>To-do-Liste</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════════ -->
+<main>
+
+  <!-- ── COVER ── -->
+  <div class="cover">
+    <div class="tag">Marketing-Kampagne · Stand 10. März 2026</div>
+    <h1>Padel Clothing Club</h1>
+    <div class="domain">www.padelclothingclub.com</div>
+    <div class="meta-pills">
+      <span class="pill">🎾 Nischen-Fashion E-Commerce</span>
+      <span class="pill">📱 Meta Ads (Facebook / Instagram)</span>
+      <span class="pill">🌍 DACH + Spanien + Schweden</span>
+      <span class="pill">🛍️ B2C · D2C</span>
+      <span class="pill">Shopify / WooCommerce</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       01 — EXECUTIVE SUMMARY
+  ══════════════════════════════════════ -->
+  <section id="summary">
+    <h2><span class="icon">📋</span>Executive Summary</h2>
+    <p class="section-desc">Überblick über Brand, Produkt, Geschäftsziel und Ziel-KPIs.</p>
+
+    <div class="copy-box">
+      <strong>One-liner:</strong> Streetwear für die Padel-Community — Statement-Shirts, die jeder Padel-Spieler sofort versteht.
+    </div>
+
+    <p>Padel Clothing Club verkauft Premium-Graphic-Tops (T-Shirts, Hoodies) mit witzigen, padel-spezifischen Slogans wie <em>"Need Money for Padel"</em> und <em>"Sundays Are for Padel"</em>. Die Designs funktionieren als Sport-Wear und als Streetwear — und werden zum Gesprächsstarter auf jedem Court.</p>
+
+    <p><strong>Warum diese Nische:</strong> Padel ist der am schnellsten wachsende Sport Europas. Die Community ist eng, teilt Content aktiv, und es gibt kaum Konkurrenz im Segment Streetwear × Padel-Kultur.</p>
+
+    <h3>Ziel-KPIs</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-label">ROAS Meta Ads</div>
+        <div class="card-value">≥ 2,5×</div>
+        <div class="card-note">GA4-Attribution (konservativ)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Cost per Purchase</div>
+        <div class="card-value">&lt; €15</div>
+        <div class="card-note">Meta Ads Ziel</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Avg. Order Value</div>
+        <div class="card-value">≥ €35</div>
+        <div class="card-note">Bundles pushen</div>
+      </div>
+      <div class="card">
+        <div class="card-label">E-Mail Subscriber</div>
+        <div class="card-value">500+</div>
+        <div class="card-note">Erste 90 Tage</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Checkout Completion</div>
+        <div class="card-value">≥ 70%</div>
+        <div class="card-note">Website CVR</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Repeat Purchase Rate</div>
+        <div class="card-value">≥ 20%</div>
+        <div class="card-note">Innerhalb 6 Monate</div>
+      </div>
+    </div>
+
+    <h3>Kampagnen-Phasen (Zeitplan)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Woche</th><th>Phase</th><th>Schwerpunkt</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Fundament</td><td>Positionierung, Tracking Setup</td></tr>
+          <tr><td>2</td><td>Website CRO</td><td>Copy, Popups, Checkout-Optimierung</td></tr>
+          <tr><td>3</td><td>Paid Launch</td><td>Meta Ads TOF + BOF live</td></tr>
+          <tr><td>4</td><td>E-Mail</td><td>Welcome, Post-Purchase, Abbruch-Flows live</td></tr>
+          <tr><td>5–6</td><td>Organisch + A/B</td><td>Social Content Kalender, erste Tests auswerten</td></tr>
+          <tr><td>7–8</td><td>Skalierung</td><td>Winning Ads skalieren, Budget erhöhen</td></tr>
+          <tr><td>Ongoing</td><td>Retention</td><td>Referral, neue Design-Drops, Win-back</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       02 — ZIELGRUPPE
+  ══════════════════════════════════════ -->
+  <section id="zielgruppe">
+    <h2><span class="icon">👥</span>Zielgruppe</h2>
+    <p class="section-desc">Personas, Psychografie und Jobs-to-be-done.</p>
+
+    <h3>Primäre Zielgruppe</h3>
+    <p>Männer und Frauen, 20–40 Jahre, aktiv Padel spielend (2–4× pro Woche), urban, modebewusst, social-media-aktiv. Teil eines Clubs oder einer festen Spielgruppe. Teilen ihren Padel-Lifestyle aktiv auf Instagram und in WhatsApp-Gruppen.</p>
+
+    <h3>Sekundäre Zielgruppe — Gift Buyers</h3>
+    <p>Freunde, Partner, Familienmitglieder, die ein Geburtstags- oder Weihnachtsgeschenk für "jemanden der Padel liebt" suchen. Kein eigenes Padel-Wissen nötig — die Slogans sprechen für sich.</p>
+
+    <h3>Personas</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Persona</th><th>Wichtig für sie</th><th>Problem</th><th>Unser Versprechen</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Der Padel Addict</strong></td>
+            <td>Identität zeigen, auf/neben dem Court gut aussehen</td>
+            <td>Generische Sportmode spiegelt die Padel-Passion nicht wider</td>
+            <td>Ein Shirt das sagt "Ich lebe für Padel" — ohne es direkt zu sagen</td>
+          </tr>
+          <tr>
+            <td><strong>Der Gift Buyer</strong></td>
+            <td>Bedeutungsvolles, lustiges Geschenk finden</td>
+            <td>Kaum gute Nischen-Geschenke für Padel-Spieler</td>
+            <td>Das perfekte Geschenk, das der Spieler wirklich trägt und liebt</td>
+          </tr>
+          <tr>
+            <td><strong>Der Club-Spieler</strong></td>
+            <td>Community, Zugehörigkeit, geteilter Humor</td>
+            <td>Will den Club-Spirit auch außerhalb des Courts zeigen</td>
+            <td>Etwas zu tragen, das sie mit der Community verbindet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Psychografische Merkmale</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Merkmal</th><th>Ausprägung</th></tr></thead>
+        <tbody>
+          <tr><td>Identität</td><td>Bezeichnen sich stark als "Padel-Spieler" — es ist Teil ihrer Persönlichkeit, kein Hobby</td></tr>
+          <tr><td>Community</td><td>Aktiv in WhatsApp-Gruppen, teilen gerne Padel-Content, taggen Freunde in Memes</td></tr>
+          <tr><td>Kaufverhalten</td><td>Geben ohne Zögern Geld für Padel-Equipment aus (Schläger €80–€300)</td></tr>
+          <tr><td>Insider-Wissen</td><td>Lieben In-Jokes und Subkultur-Referenzen, die nur Padel-Spieler verstehen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Jobs to be done</h3>
+    <ul style="margin: 8px 0 0 20px; color: var(--gray-700); font-size: 14px;">
+      <li style="margin-bottom:6px;">"Ich will zeigen, dass ich zur Padel-Community gehöre — auf und abseits des Courts."</li>
+      <li style="margin-bottom:6px;">"Ich suche ein lustiges, einzigartiges Geschenk für meinen padel-besessenen Freund."</li>
+      <li>"Ich will etwas tragen, das mich zum Lachen bringt und Gespräche startet."</li>
+    </ul>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       03 — POSITIONIERUNG
+  ══════════════════════════════════════ -->
+  <section id="positionierung">
+    <h2><span class="icon">🎯</span>Positionierung</h2>
+    <p class="section-desc">Positioning Statement, Differenzierung, Competitive Landscape und Brand Voice.</p>
+
+    <h3>Positioning Statement</h3>
+    <div class="copy-box">
+      Für Padel-Spieler, die ihre Leidenschaft auch außerhalb des Courts zeigen wollen — Padel Clothing Club macht Streetwear, die Insider-Witze zum Style-Statement macht.
+    </div>
+
+    <h3>Kernbotschaften (Value Props)</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-label">Insider-Community</div>
+        <div class="card-value" style="font-size:15px; margin-top:4px;">Nur für Padel-Spieler</div>
+        <div class="card-note">Designs die Außenstehende verwirren — Padel-Spieler sofort erkennen.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Qualität</div>
+        <div class="card-value" style="font-size:15px; margin-top:4px;">Kein billiges Merch</div>
+        <div class="card-note">100% Premium-Baumwolle, Streetwear-Qualität, wash-proof Prints.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Community-First</div>
+        <div class="card-value" style="font-size:15px; margin-top:4px;">Von Spielern gemacht</div>
+        <div class="card-note">Jeder Slogan kommt aus echten Gesprächen auf echten Courts.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Gift-Ready</div>
+        <div class="card-value" style="font-size:15px; margin-top:4px;">Perfektes Geschenk</div>
+        <div class="card-note">Das Geschenk, nach dem Gift Buyer wirklich suchen.</div>
+      </div>
+    </div>
+
+    <h3>Wettbewerbsvergleich</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Wettbewerber</th><th>Schwäche</th><th>Unser Vorteil</th></tr></thead>
+        <tbody>
+          <tr><td>Nike / Adidas (Sportswear)</td><td>Keine Padel-Identität, kein Humor</td><td>Insider-Slogans, Community-Feel</td></tr>
+          <tr><td>Padel-Schläger-Brands (Merch)</td><td>Promotionell, kein echter Community-Charakter</td><td>Streetwear-Ästhetik, nicht corporate</td></tr>
+          <tr><td>Print-on-Demand (Redbubble etc.)</td><td>Geringe Qualität, kein Community-Gefühl</td><td>Premium-Qualität, kuratiete Designs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Brand Voice</h3>
+    <div class="info-box">
+      <strong>Ton:</strong> Witzig, selbstironisch, community-first. Spricht wie ein Padel-Spieler mit einem anderen — nie corporate, nie aufgesetzt.<br>
+      <strong>Worte nutzen:</strong> Court, Rally, Padel Life, Drop, The Club, Community, Obsessed, Sunday Padel<br>
+      <strong>Worte meiden:</strong> Athlete, Performance, Technical, Gear, Equipment
+    </div>
+
+    <h3>Preispositionierung</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Produkt</th><th>Preis</th><th>Positionierung</th></tr></thead>
+        <tbody>
+          <tr><td>T-Shirt</td><td>€29–€39</td><td>Nischen-Premium — nicht Discounter</td></tr>
+          <tr><td>Hoodie</td><td>€49–€59</td><td>Premium Community-Wear</td></tr>
+          <tr><td>Bundle (2 Items)</td><td>−10% Rabatt</td><td>AOV erhöhen, Gruppen-Kauf incentivieren</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       04 — WEBSITE COPY
+  ══════════════════════════════════════ -->
+  <section id="website-copy">
+    <h2><span class="icon">✍️</span>Website Copy</h2>
+    <p class="section-desc">Copy für Homepage Hero, Value Props, Produkt-Seiten und Popups.</p>
+
+    <h3>Homepage — Hero</h3>
+    <div class="copy-box">
+      <strong>H1:</strong> Weil Padel nicht bei der Linie aufhört.<br>
+      <strong>Sub:</strong> Streetwear für die Community, die Rallies über Meetings stellt. Statements, die nur Padel-Spieler wirklich verstehen.<br>
+      <strong>CTA:</strong> Shop the Drop →<br>
+      <strong>Microcopy:</strong> Kostenloser Versand ab €50 · Schnelle Lieferung · 30 Tage Rückgabe
+    </div>
+
+    <h3>Value Props</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="card-label">Identity</div>
+        <div class="card-value" style="font-size:14px; line-height:1.4; margin-top:4px;">Nur für Padel-Spieler</div>
+        <div class="card-note">Designs die Außenstehende verwirren und Padel-Spieler sofort zum Lachen bringen.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Quality</div>
+        <div class="card-value" style="font-size:14px; line-height:1.4; margin-top:4px;">Kein billiges Merch</div>
+        <div class="card-note">100% Premium-Baumwolle. Prints die auch nach dem 50. Waschen noch sitzen.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Community</div>
+        <div class="card-value" style="font-size:14px; line-height:1.4; margin-top:4px;">Gemacht von Spielern</div>
+        <div class="card-note">Jeder Slogan kommt aus echten Gesprächen auf echten Courts.</div>
+      </div>
+    </div>
+
+    <h3>Produkt-Copy: "Need Money for Padel"</h3>
+    <div class="copy-box">
+      Du kennst das Gefühl. Ersatz-Schläger? Gekauft. Neue Overgrips? Natürlich. Premium-Court-Zeit am Wochenende? Gebucht. Das Bankkonto? Weniger begeistert.<br><br>
+      Dieses Shirt sagt das, was du deiner Partnerin/deinem Partner nie direkt sagen könntest — aber mit einem Lächeln.
+    </div>
+    <p><strong>Feature Bullets:</strong> ✓ Trägst du nach dem Training. Und zum Brunch danach. &nbsp;·&nbsp; ✓ 100% Premium Baumwolle, wash-proof &nbsp;·&nbsp; ✓ Jeder Padel-Spieler der's sieht, schmunzelt &nbsp;·&nbsp; ✓ Unisex Schnitt, S–XXL</p>
+
+    <h3>Produkt-Copy: "Sundays Are for Padel"</h3>
+    <div class="copy-box">
+      Samstagabend: Schlafenszeit um 22:30. Sonntagmorgen: Wecker um 8:00. Kaffee. Court. Wer das kennt, braucht keine Erklärung. Wer das nicht kennt — der versteht das Shirt sowieso nicht.
+    </div>
+
+    <h3>Popup Copy</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Popup-Typ</th><th>Headline</th><th>Body</th><th>CTA</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Exit-Intent</td>
+            <td>Warte kurz, Coach.</td>
+            <td>Sichere dir 10% auf deine erste Bestellung. Nur für neue Mitglieder.</td>
+            <td>10% sichern →</td>
+          </tr>
+          <tr>
+            <td>Welcome (30 Sek.)</td>
+            <td>Neu im Club?</td>
+            <td>10% Rabatt + Early Access auf neue Drops + Padel-Content für Club-Mitglieder.</td>
+            <td>Club beitreten →</td>
+          </tr>
+          <tr>
+            <td>Post-Purchase</td>
+            <td>Du bist jetzt Teil des Clubs.</td>
+            <td>Zeig uns deinen Look! Tag @padelclothingclub oder #padelclothingclub</td>
+            <td>Instagram folgen →</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Über Uns Page</h3>
+    <div class="copy-box">
+      <strong>Headline:</strong> Wir spielen auch. Genau deshalb gibt's das hier.<br><br>
+      Padel Clothing Club ist aus einer einfachen Frage entstanden: Warum gibt es keine Kleidung, die wirklich von Padel-Spielern für Padel-Spieler gemacht ist? Nicht Performance-Wear mit einem Schläger-Logo. Sondern Streetwear, die den Humor, die Sucht und die Community dieses Sports zeigt.
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       05 — META ADS
+  ══════════════════════════════════════ -->
+  <section id="meta-ads">
+    <h2><span class="icon">📣</span>Meta Ads</h2>
+    <p class="section-desc">3-Kampagnen-Funnel, Audience-Strategie, Creative-Angles und A/B-Tests.</p>
+
+    <h3>Kampagnen-Funnel Übersicht</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Kampagne</th><th>Funnel</th><th>Budget-Anteil</th><th>Bid-Strategie</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Campaign 1: Cold Traffic</strong></td>
+            <td><span class="tag-tof">TOF</span></td>
+            <td>60%</td>
+            <td>Cost Cap (Ziel: €12 CPP)</td>
+          </tr>
+          <tr>
+            <td><strong>Campaign 2: Warm Traffic</strong></td>
+            <td><span class="tag-mof">MOF</span></td>
+            <td>15%</td>
+            <td>Lowest Cost</td>
+          </tr>
+          <tr>
+            <td><strong>Campaign 3: Retargeting</strong></td>
+            <td><span class="tag-bof">BOF</span></td>
+            <td>25%</td>
+            <td>Cost Cap (bis €20 CPP)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Startbudget:</strong> €30–50/Tag gesamt (erste 4 Wochen Testing) &nbsp;·&nbsp; <strong>Skalierung:</strong> +20–30% alle 3–5 Tage nach Winner-Identifikation</p>
+
+    <h3>Ad Sets &amp; Audiences</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Ad Set</th><th>Typ</th><th>Geo</th><th>Targeting</th><th>Budget/Tag</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1A — Padel Interests DACH</td>
+            <td><span class="tag-tof">TOF</span></td>
+            <td>DE, AT, CH</td>
+            <td>Padel, Padel Tennis, World Padel Tour, Bullpadel, Nox, Head Padel, Babolat</td>
+            <td>€10</td>
+          </tr>
+          <tr>
+            <td>1B — Padel Interests International</td>
+            <td><span class="tag-tof">TOF</span></td>
+            <td>ES, SE, NL, BE</td>
+            <td>Gleich wie 1A · Sprache: Englisch</td>
+            <td>€10</td>
+          </tr>
+          <tr>
+            <td>1C — Lookalike 1% Käufer</td>
+            <td><span class="tag-tof">TOF</span></td>
+            <td>DACH</td>
+            <td>LAL 1% basierend auf allen Käufern (≥100 nötig)</td>
+            <td>€10</td>
+          </tr>
+          <tr>
+            <td>2A — Website-Besucher 30d</td>
+            <td><span class="tag-mof">MOF</span></td>
+            <td>DACH</td>
+            <td>Custom Audience: Besucher letzte 30 Tage (excl. Käufer)</td>
+            <td>€5</td>
+          </tr>
+          <tr>
+            <td>2B — Video-Viewer 50%+</td>
+            <td><span class="tag-mof">MOF</span></td>
+            <td>DACH</td>
+            <td>Custom Audience: 50%+ Video-Viewer (excl. Käufer)</td>
+            <td>€5</td>
+          </tr>
+          <tr>
+            <td>3A — Add-to-Cart ohne Kauf</td>
+            <td><span class="tag-bof">BOF</span></td>
+            <td>DACH</td>
+            <td>Custom: ATC-Event letzte 7 Tage (excl. Purchase)</td>
+            <td>€8</td>
+          </tr>
+          <tr>
+            <td>3B — Produktseiten-Viewer 14d</td>
+            <td><span class="tag-bof">BOF</span></td>
+            <td>DACH</td>
+            <td>Custom: ViewContent letzte 14 Tage (excl. ATC + Purchase)</td>
+            <td>€5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Creative-Angles (5 Strategien)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Angle</th><th>Psychologie</th><th>Format</th><th>Funnel</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Identity — "Das bin ich"</strong></td>
+            <td>Identity-based buying</td>
+            <td>Static Feed, UGC Video (15s), Reel</td>
+            <td><span class="tag-tof">TOF</span></td>
+          </tr>
+          <tr>
+            <td><strong>2. Community — "Insider-Witz"</strong></td>
+            <td>Belonging, Tribal Identity</td>
+            <td>Carousel, Meme-Style Static</td>
+            <td><span class="tag-tof">TOF</span></td>
+          </tr>
+          <tr>
+            <td><strong>3. Gift — "Perfektes Geschenk"</strong></td>
+            <td>Gift-Giving Motivation</td>
+            <td>Static (Gift-Setting), Short Video</td>
+            <td><span class="tag-tof">TOF</span></td>
+          </tr>
+          <tr>
+            <td><strong>4. Social Proof — "Alle haben's"</strong></td>
+            <td>Social Validation, FOMO</td>
+            <td>Review Showcase, Dynamic Product Ads</td>
+            <td><span class="tag-mof">MOF</span> <span class="tag-bof">BOF</span></td>
+          </tr>
+          <tr>
+            <td><strong>5. Urgency/Scarcity — "Nur noch X"</strong></td>
+            <td>Loss Aversion</td>
+            <td>Static Retargeting, Dynamic Product Ads</td>
+            <td><span class="tag-bof">BOF</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Beispiel-Copy (Angle 1 — Identity)</h3>
+    <div class="copy-box">
+      <strong>Primary Text (DE):</strong> Wer Padel spielt, weiß es. Wer keinen Padel spielt, versteht's eh nicht. 🎾 Das Shirt sagt, was du nicht sagst.<br>
+      <strong>Headline:</strong> Need Money for Padel. (29 Zeichen ✓)<br>
+      <strong>Description:</strong> Jetzt im Padel Clothing Club. (30 Zeichen ✓)
+    </div>
+
+    <h3>A/B Test Plan (priorisiert)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Priorität</th><th>Test</th><th>Variante A</th><th>Variante B</th><th>Metric</th></tr></thead>
+        <tbody>
+          <tr><td>⭐⭐⭐⭐⭐</td><td>Creative-Typ</td><td>UGC-Style Video</td><td>Studio-Foto</td><td>CTR, ROAS</td></tr>
+          <tr><td>⭐⭐⭐⭐⭐</td><td>Copy-Angle</td><td>Identity "Das bin ich"</td><td>Gift "Perfektes Geschenk"</td><td>CPP</td></tr>
+          <tr><td>⭐⭐⭐⭐</td><td>Audience</td><td>Padel-Interessen</td><td>Racket-Brands</td><td>CPP, CPM</td></tr>
+          <tr><td>⭐⭐⭐⭐</td><td>Landing Page</td><td>Produkt-Seite</td><td>Collection-Seite</td><td>CVR + ROAS</td></tr>
+          <tr><td>⭐⭐⭐</td><td>CTA-Text</td><td>"Shop Now"</td><td>"Find your Slogan"</td><td>CTR</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--gray-700);">Statistik: 95% Konfidenz, MDE 20%. Meta Ads: ~8.600 Impressionen pro Variante nötig (≈€43 bei €5 CPM).</p>
+
+    <h3>Optimierungs-Regeln</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Symptom</th><th>Maßnahme</th></tr></thead>
+        <tbody>
+          <tr><td>CPP &gt; €20</td><td>Landing Page CVR prüfen · neue Creatives testen · Audience erweitern</td></tr>
+          <tr><td>CTR &lt; 1% (TOF)</td><td>Creative refresh · neuen Hook testen · Audience-Fit überprüfen</td></tr>
+          <tr><td>ROAS &lt; 2,0</td><td>AOV erhöhen (Bundles) · BOF-Budget erhöhen · E-Mail Sequence prüfen</td></tr>
+          <tr><td>ROAS &gt; 3,0 (Winner)</td><td>Budget +20–30% alle 3–5 Tage · Ad Set duplizieren mit neuen Creatives</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       06 — E-MAIL & RETENTION
+  ══════════════════════════════════════ -->
+  <section id="email-retention">
+    <h2><span class="icon">📧</span>E-Mail &amp; Retention</h2>
+    <p class="section-desc">Automation Flows, Warenkorbabbruch, Referral-Programm und Retention-Strategie.</p>
+
+    <h3>Flow-Übersicht</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Flow</th><th>Trigger</th><th>E-Mails</th><th>Ziel</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Welcome Series</strong></td><td>E-Mail Signup (Popup / Footer)</td><td>5 E-Mails · 14 Tage</td><td>Erstkauf konvertieren</td></tr>
+          <tr><td><strong>Post-Purchase</strong></td><td>Kauf abgeschlossen</td><td>3 E-Mails · 21 Tage</td><td>LTV erhöhen, UGC generieren</td></tr>
+          <tr><td><strong>Warenkorbabbruch</strong></td><td>ATC ohne Kauf (1h)</td><td>3 E-Mails · 72h</td><td>Conversion retten</td></tr>
+          <tr><td><strong>Win-back</strong></td><td>90 Tage kein Kauf</td><td>2 E-Mails</td><td>Inaktive zurückholen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Welcome Series — 5 E-Mails</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-timing">Sofort</div>
+        <div class="step-title">Willkommen im Club 🎾</div>
+        <div class="step-body">Rabattcode <strong>WELCOME10</strong> + Brand One-liner + Shop-CTA</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-timing">Tag 2</div>
+        <div class="step-title">Woher kommt "Need Money for Padel"?</div>
+        <div class="step-body">Brand Storytelling + Bestseller showcasen</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-timing">Tag 5</div>
+        <div class="step-title">Was andere Padel-Spieler sagen</div>
+        <div class="step-body">Reviews + Social Proof (⭐⭐⭐⭐⭐ Zitate)</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-timing">Tag 8</div>
+        <div class="step-title">Style-Inspiration für deinen Padel-Tag</div>
+        <div class="step-body">Outfit-Ideen Court + Alltag + Bundle Cross-sell</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-timing">Tag 14</div>
+        <div class="step-title">Letzter Reminder — dein Code läuft ab</div>
+        <div class="step-body">Urgency + WELCOME10 Ablauf + Top 3 Bestseller</div>
+      </div>
+    </div>
+
+    <h3>Warenkorbabbruch — 3 E-Mails</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-timing">1 Stunde</div>
+        <div class="step-title">Du hast was auf dem Court gelassen 🎾</div>
+        <div class="step-body">Erinnerung · Produktbild · Zurück zum Warenkorb</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-timing">24 Stunden</div>
+        <div class="step-title">Andere Padel-Spieler aus deiner Region haben's geholt</div>
+        <div class="step-body">Social Proof Zitat + Urgency + Produktbild</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-timing">72 Stunden</div>
+        <div class="step-title">Letzter Versuch: 5€ extra Rabatt</div>
+        <div class="step-body">Code <strong>PADEL5</strong> · Gilt bis Mitternacht</div>
+      </div>
+    </div>
+
+    <h3>Referral-Programm</h3>
+    <div class="info-box">
+      <strong>Warum Referral hier riesig ist:</strong> Padel ist ein Gruppen-Sport. Spieler spielen nicht allein — sie spielen mit Freunden, in Clubs, in WhatsApp-Gruppen. Ein Träger = 2–3 Spieler sehen das Shirt direkt auf dem Court.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Wer</th><th>Aktion</th><th>Belohnung</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Referrer</strong> (bestehender Käufer)</td>
+            <td>Teilt persönlichen Code</td>
+            <td>15% Store Credit nach erstem Kauf des Geworbenen</td>
+          </tr>
+          <tr>
+            <td><strong>Referred</strong> (neuer Käufer)</td>
+            <td>Kauft mit Referral-Code</td>
+            <td>10% Rabatt auf erste Bestellung</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Tool-Empfehlung:</strong> <strong>Tolt</strong> (ab ~$29/Monat, native Shopify-Integration) oder Rewardful</p>
+    <p><strong>Trigger-Punkte:</strong> Post-Purchase Page (direkt nach Kauf) + E-Mail Tag 7 (Post-Purchase Flow)</p>
+    <p><strong>WhatsApp-Share-Text:</strong> <em>"Hey! Ich hab mir ein Shirt von Padel Clothing Club geholt. Mit meinem Code [CODE] kriegst du 10% Rabatt: padelclothingclub.com 🎾"</em></p>
+
+    <h3>Saisonale Kampagnen</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Zeitpunkt</th><th>Thema</th><th>Betreff-Beispiel</th></tr></thead>
+        <tbody>
+          <tr><td>Nov / Dez</td><td>Weihnachten · Gift Guide</td><td>"Das Geschenk, nach dem jeder Padel-Spieler sucht"</td></tr>
+          <tr><td>März / April</td><td>Frühjahr / Outdoor-Saison</td><td>"New Drop für die Outdoor-Saison"</td></tr>
+          <tr><td>November</td><td>Black Friday (Limited)</td><td>"Nur heute: Dein Slogan für weniger"</td></tr>
+          <tr><td>Alle 6–8 Wochen</td><td>New Drop Announcement</td><td>"New Drop: [Slogan] ist da 🎾 — Early Access für dich"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       07 — TRACKING & KPIs
+  ══════════════════════════════════════ -->
+  <section id="tracking">
+    <h2><span class="icon">📊</span>Tracking &amp; KPIs</h2>
+    <p class="section-desc">Tracking-Stack, Events, UTM-Konvention und KPI-Dashboard.</p>
+
+    <h3>Tracking-Stack</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tool</th><th>Zweck</th><th>Priorität</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GA4</strong></td><td>Website-Analytics, Conversion Tracking, Attribution</td><td><span class="badge">Kritisch</span></td></tr>
+          <tr><td><strong>GTM</strong></td><td>Tag-Management — alle anderen Tags laufen darüber</td><td><span class="badge">Kritisch</span></td></tr>
+          <tr><td><strong>Meta Pixel</strong></td><td>Meta Ads Conversion Tracking, Audience Building</td><td><span class="badge">Kritisch</span></td></tr>
+          <tr><td><strong>Meta CAPI</strong></td><td>Server-Side Events (iOS14+ Workaround)</td><td><span class="badge">Kritisch</span></td></tr>
+          <tr><td><strong>Klaviyo / Mailchimp</strong></td><td>E-Mail Analytics, Flow Performance</td><td><span class="badge badge-gray">Wichtig</span></td></tr>
+          <tr><td><strong>Tolt / Rewardful</strong></td><td>Referral-Tracking</td><td><span class="badge badge-gray">Wichtig</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Conversion Events</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Event</th><th>Trigger</th><th>GA4</th><th>Meta Pixel</th></tr></thead>
+        <tbody>
+          <tr><td><code>purchase</code></td><td>Kauf abgeschlossen (Thank You Page)</td><td>✓ Als Conversion</td><td>✓ Purchase</td></tr>
+          <tr><td><code>add_to_cart</code></td><td>"In den Warenkorb" geklickt</td><td>✓</td><td>✓ AddToCart</td></tr>
+          <tr><td><code>begin_checkout</code></td><td>Checkout-Seite geöffnet</td><td>✓</td><td>✓ InitiateCheckout</td></tr>
+          <tr><td><code>view_item</code></td><td>Produkt-Seite aufgerufen</td><td>✓</td><td>✓ ViewContent</td></tr>
+          <tr><td><code>generate_lead</code></td><td>E-Mail Signup (Popup/Footer)</td><td>✓ Als Conversion (€5 Wert)</td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>UTM-Konvention</h3>
+    <pre>Meta Ads TOF:   utm_source=meta&amp;utm_medium=paid_social&amp;utm_campaign=TOF-padel-interests
+Meta Ads BOF:   utm_source=meta&amp;utm_medium=paid_social&amp;utm_campaign=BOF-retargeting-atc
+Welcome E-Mail: utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=welcome-series
+Post-Purchase:  utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=post-purchase
+Instagram Bio:  utm_source=instagram&amp;utm_medium=organic_social&amp;utm_campaign=bio-link
+Referral:       utm_source=tolt&amp;utm_medium=referral&amp;utm_campaign=padel-friends</pre>
+
+    <h3>KPI-Dashboard (Wöchentlich)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>KPI</th><th>Ziel</th><th>Woche 1</th><th>Woche 2</th><th>Woche 3</th><th>Woche 4</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ROAS Meta (GA4)</strong></td><td>≥ 2,5×</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>CPP (Cost per Purchase)</strong></td><td>&lt; €15</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>CTR</strong></td><td>&gt; 1,5%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>CPM</strong></td><td>&lt; €12</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>Website CVR</strong></td><td>≥ 2%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>AOV</strong></td><td>≥ €35</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>E-Mail Open Rate</strong></td><td>≥ 35%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>Checkout Completion</strong></td><td>≥ 70%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>Neue Subscriber/Woche</strong></td><td>≥ 50</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td><strong>Referral-Anteil Revenue</strong></td><td>≥ 15%</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Social Content — 4 Content-Säulen (Instagram/TikTok)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Säule</th><th>Anteil</th><th>Ziel</th><th>Formate</th></tr></thead>
+        <tbody>
+          <tr><td>🎾 Humor &amp; Memes</td><td>35%</td><td>Shares, Kommentare, organische Reichweite</td><td>Reels, Carousels</td></tr>
+          <tr><td>🌅 Lifestyle</td><td>30%</td><td>Aspiration, Brand-Building</td><td>Reels, Einzelbilder</td></tr>
+          <tr><td>👥 Community</td><td>20%</td><td>Trust, UGC, Engagement</td><td>Stories, Reposts</td></tr>
+          <tr><td>🛍️ Produkt</td><td>15%</td><td>Conversion, Klicks auf Shop</td><td>Einzelbilder, Reels</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Posting-Frequenz:</strong> 4×/Woche (Mo / Mi / Fr / So) &nbsp;·&nbsp; <strong>Core-Hashtags:</strong> <span class="badge">#padelclothingclub</span> <span class="badge">#padel</span> <span class="badge">#padeltennis</span> <span class="badge">#padelobsessed</span></p>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       08 — TO-DO-LISTE
+  ══════════════════════════════════════ -->
+  <section id="todos">
+    <h2><span class="icon">✅</span>To-do-Liste</h2>
+    <p class="section-desc">Alle Aufgaben vor dem Go-Live, aggregiert aus allen Kampagnen-Bereichen.</p>
+
+    <h3>Tracking &amp; Tech Setup</h3>
+    <ul class="checklist">
+      <li><span class="cat">GA4</span>GA4 Property erstellt und Tracking-Code auf Shopify/WooCommerce installiert</li>
+      <li><span class="cat">GA4</span>Enhanced Measurement aktiviert (Page Views, Scrolls, Outbound Clicks)</li>
+      <li><span class="cat">GA4</span>Alle 5 Conversion Events in GA4 Realtime sichtbar</li>
+      <li><span class="cat">GA4</span>Interne IP-Adresse als Traffic-Filter ausschließen</li>
+      <li><span class="cat">GTM</span>GTM Container live — alle Tags im Preview getestet, keine Duplikate</li>
+      <li><span class="cat">Meta Pixel</span>Meta Pixel via GTM installiert — alle 5 Events in Events Manager sichtbar</li>
+      <li><span class="cat">Meta Pixel</span>Conversions API (CAPI) aktiv — Events werden doppelt empfangen (Deduplizierung aktiv)</li>
+      <li><span class="cat">Meta Pixel</span>Event Match Quality ≥ 7,0 im Events Manager</li>
+      <li><span class="cat">Meta Pixel</span>Test-Purchase durchgeführt — in Meta Events Manager bestätigt</li>
+    </ul>
+
+    <h3>Meta Ads Vorbereitung</h3>
+    <ul class="checklist">
+      <li><span class="cat">Meta Ads</span>Business Manager eingerichtet, Ad Account in EUR</li>
+      <li><span class="cat">Meta Ads</span>Produktkatalog aus Shopify/WooCommerce verbunden (für Dynamic Product Ads)</li>
+      <li><span class="cat">Meta Ads</span>Custom Audiences erstellt: Website-Besucher, Käufer, Add-to-Cart</li>
+      <li><span class="cat">Meta Ads</span>Lookalike Audiences erstellt (1% Käufer und Website-Besucher)</li>
+      <li><span class="cat">Meta Ads</span>UTM-Parameter für alle Ads gesetzt (Naming Convention beachten)</li>
+      <li><span class="cat">Meta Ads</span>Alle Creatives produziert (mind. 3 Varianten pro Angle: Static, Video, Carousel)</li>
+      <li><span class="cat">Meta Ads</span>Landing Pages mobile-optimiert und schnell (&lt;3 Sek. Ladezeit)</li>
+      <li><span class="cat">Meta Ads</span>Kampagnen 1 (TOF), 2 (MOF), 3 (BOF) angelegt und geprüft</li>
+    </ul>
+
+    <h3>E-Mail Setup</h3>
+    <ul class="checklist">
+      <li><span class="cat">E-Mail</span>Klaviyo oder Mailchimp mit Shopify/WooCommerce verbunden</li>
+      <li><span class="cat">E-Mail</span>Welcome Series (5 E-Mails) erstellt und getestet</li>
+      <li><span class="cat">E-Mail</span>Post-Purchase Flow (3 E-Mails) live</li>
+      <li><span class="cat">E-Mail</span>Warenkorbabbruch Flow (3 E-Mails) live</li>
+      <li><span class="cat">E-Mail</span>WELCOME10 Rabattcode erstellt und in E-Mail 1 + Popup hinterlegt</li>
+      <li><span class="cat">E-Mail</span>Double Opt-In DSGVO-konform eingerichtet</li>
+    </ul>
+
+    <h3>Website CRO</h3>
+    <ul class="checklist">
+      <li><span class="cat">Website</span>Homepage Hero-Copy aktualisiert (Headline + Sub + CTA)</li>
+      <li><span class="cat">Website</span>Produkt-Beschreibungen überarbeitet (Benefit-first Bullets)</li>
+      <li><span class="cat">Website</span>Exit-Intent Popup eingerichtet (10% Rabatt + E-Mail Capture)</li>
+      <li><span class="cat">Website</span>Social Proof Bar auf Homepage eingebaut (Reviews, Anzahl Käufer)</li>
+      <li><span class="cat">Website</span>Guest Checkout aktiviert</li>
+      <li><span class="cat">Website</span>Trust-Signale auf Produkt-Seiten sichtbar (Versand, Rückgabe, Sicherheit)</li>
+      <li><span class="cat">Website</span>Product Schema + FAQ Schema auf Produkt-Seiten implementiert</li>
+    </ul>
+
+    <h3>Referral &amp; Community</h3>
+    <ul class="checklist">
+      <li><span class="cat">Referral</span>Tolt oder Rewardful Account erstellt und mit Shopify verbunden</li>
+      <li><span class="cat">Referral</span>Reward-Struktur konfiguriert (15% Credit Referrer / 10% Discount Referred)</li>
+      <li><span class="cat">Referral</span>Post-Purchase Page mit Referral-Code-Block ergänzt</li>
+      <li><span class="cat">Referral</span>Post-Purchase E-Mail 2 (Tag 7) mit Referral-CTA versehen</li>
+      <li><span class="cat">Social</span>Instagram-Profil optimiert: Bio, Link in Bio (padelclothingclub.com), Highlights</li>
+      <li><span class="cat">Social</span>Ersten 30-Tage Content-Kalender fertig und 2 Wochen vorproduziert</li>
+      <li><span class="cat">Social</span>TikTok-Account erstellt (wenn noch nicht vorhanden)</li>
+    </ul>
+
+    <h3>Launch &amp; Monitoring</h3>
+    <ul class="checklist">
+      <li><span class="cat">Launch</span>Probekauf auf der eigenen Website gemacht — E-Mails, Tracking, Pixel alles geprüft</li>
+      <li><span class="cat">Launch</span>GA4 + Meta Ads Manager gleichzeitig geöffnet bei Go-Live</li>
+      <li><span class="cat">Launch</span>Wöchentliches KPI-Dashboard eingerichtet (Tabelle befüllen)</li>
+      <li><span class="cat">Test</span>A/B Test 1 (UGC vs. Studio) gestartet — Hypothese dokumentiert</li>
+      <li><span class="cat">Test</span>A/B Test 4 (Audience: Padel Interest vs. Racket Brands) parallel gestartet</li>
+    </ul>
+
+    <div class="info-box" style="margin-top: 28px;">
+      <strong>Tipp:</strong> Priorität hat immer das, was direkt Revenue beeinflusst: Warenkorbabbruch-Flow, Meta Pixel + CAPI, und der erste Meta Ads Campaign-Launch (TOF). Starte nicht mit allem gleichzeitig — die ersten 2 Wochen dienen dem Daten-Sammeln.
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
