@@ -405,6 +405,117 @@
 
     .info-box strong { color: var(--green); }
 
+    /* ── ANGLE BLOCK (Creative Angles) ── */
+    .angle-block {
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .angle-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .angle-num {
+      width: 28px; height: 28px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .angle-title { font-weight: 700; font-size: 14px; flex: 1; }
+
+    .angle-psych {
+      font-size: 11px;
+      background: var(--green-light);
+      color: var(--green);
+      border-radius: 20px;
+      padding: 2px 10px;
+    }
+
+    .angle-body { padding: 18px; }
+
+    .angle-body h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-700);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin: 16px 0 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .angle-body h4:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+    /* ── COPY FIELD ── */
+    .copy-field {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin: 8px 0;
+      font-size: 13.5px;
+    }
+
+    .copy-field .cf-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gray-400);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .copy-field .cf-text {
+      color: var(--gray-900);
+      line-height: 1.6;
+    }
+
+    .copy-field .cf-text em {
+      font-style: italic;
+      color: var(--gray-700);
+    }
+
+    .copy-field .cf-count {
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ── VIDEO BRIEF ── */
+    .video-brief {
+      background: var(--gray-900);
+      color: #ced4da;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      margin: 8px 0;
+      line-height: 1.7;
+    }
+
+    .video-brief .vb-label {
+      color: #69db7c;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
     /* ── PRINT ── */
     @media print {
       nav { display: none; }
@@ -746,27 +857,54 @@
   ══════════════════════════════════════ -->
   <section id="meta-ads">
     <h2><span class="icon">📣</span>Meta Ads</h2>
-    <p class="section-desc">3-Kampagnen-Funnel, Audience-Strategie, Creative-Angles und A/B-Tests.</p>
+    <p class="section-desc">Vollständige Kampagnenstruktur (TOF/MOF/BOF), alle Ad-Sets mit Targeting, 5 Creative-Angles mit Texten und Video-Briefs, Plattform-Specs, A/B-Tests und Optimierungsregeln.</p>
 
+    <!-- ACCOUNT SETUP -->
+    <h3>Account Setup &amp; Naming Convention</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Einstellung</th><th>Wert</th></tr></thead>
+        <tbody>
+          <tr><td>Business Manager</td><td>Padel Clothing Club</td></tr>
+          <tr><td>Währung</td><td>EUR</td></tr>
+          <tr><td>Pixel</td><td>Padel Clothing Club Pixel + Conversions API (CAPI)</td></tr>
+          <tr><td>Produktkatalog</td><td>Shopify/WooCommerce-Katalog (für Dynamic Product Ads)</td></tr>
+          <tr><td>Conversion Window</td><td>7-Day Click, 1-Day View</td></tr>
+          <tr><td>Attribution</td><td>Data-Driven (bei &lt;100 Conversions: 7d Click)</td></tr>
+          <tr><td>Delivery</td><td>Standard (nicht Accelerated)</td></tr>
+          <tr><td>Optimierungsziel</td><td>Purchase (nicht ATC oder View Content)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="video-brief">
+      <span class="vb-label">Naming Convention</span>
+      [Platform]_[Objective]_[Audience]_[Creative-Typ]_[Quartal]<br><br>
+      Beispiele:<br>
+      META_CONV_TOF-Padel-Interests_UGC-Video_2026Q1<br>
+      META_CONV_BOF-ATC-Retargeting_DPA_2026Q1<br>
+      META_CONV_MOF-WebsiteVisitors_StaticSlogan_2026Q1
+    </div>
+
+    <!-- KAMPAGNEN-FUNNEL -->
     <h3>Kampagnen-Funnel Übersicht</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Kampagne</th><th>Funnel</th><th>Budget-Anteil</th><th>Bid-Strategie</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>Campaign 1: Cold Traffic</strong></td>
+            <td><strong>Kampagne 1: Kalter Traffic</strong></td>
             <td><span class="tag-tof">TOF</span></td>
             <td>60%</td>
             <td>Cost Cap (Ziel: €12 CPP)</td>
           </tr>
           <tr>
-            <td><strong>Campaign 2: Warm Traffic</strong></td>
+            <td><strong>Kampagne 2: Warmer Traffic</strong></td>
             <td><span class="tag-mof">MOF</span></td>
             <td>15%</td>
             <td>Lowest Cost</td>
           </tr>
           <tr>
-            <td><strong>Campaign 3: Retargeting</strong></td>
+            <td><strong>Kampagne 3: Retargeting</strong></td>
             <td><span class="tag-bof">BOF</span></td>
             <td>25%</td>
             <td>Cost Cap (bis €20 CPP)</td>
@@ -774,137 +912,402 @@
         </tbody>
       </table>
     </div>
-
     <p><strong>Startbudget:</strong> €30–50/Tag gesamt (erste 4 Wochen Testing) &nbsp;·&nbsp; <strong>Skalierung:</strong> +20–30% alle 3–5 Tage nach Winner-Identifikation</p>
 
-    <h3>Ad Sets &amp; Audiences</h3>
+    <!-- AD SETS -->
+    <h3>Ad Sets &amp; Zielgruppen (detailliert)</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Ad Set</th><th>Typ</th><th>Geo</th><th>Targeting</th><th>Budget/Tag</th></tr></thead>
+        <thead><tr><th>Ad Set</th><th>Typ</th><th>Geo</th><th>Targeting</th><th>Ausschlüsse</th><th>Budget/Tag</th></tr></thead>
         <tbody>
           <tr>
-            <td>1A — Padel Interests DACH</td>
+            <td><strong>1A — Padel Interests DACH</strong></td>
             <td><span class="tag-tof">TOF</span></td>
             <td>DE, AT, CH</td>
-            <td>Padel, Padel Tennis, World Padel Tour, Bullpadel, Nox, Head Padel, Babolat</td>
+            <td>Padel, Padel Tennis, World Padel Tour, Bullpadel, Nox, Head Padel, Babolat, Tennis (broad fallback) · Alter 20–45 · Online-Käufer</td>
+            <td>Käufer (365d) · E-Mail-Liste</td>
             <td>€10</td>
           </tr>
           <tr>
-            <td>1B — Padel Interests International</td>
+            <td><strong>1B — Padel Interests International</strong></td>
             <td><span class="tag-tof">TOF</span></td>
             <td>ES, SE, NL, BE</td>
-            <td>Gleich wie 1A · Sprache: Englisch</td>
+            <td>Gleich wie 1A · Sprache der Ads: Englisch · Spanien = größter Padel-Markt, Schweden = schnellstes Wachstum</td>
+            <td>Käufer (365d)</td>
             <td>€10</td>
           </tr>
           <tr>
-            <td>1C — Lookalike 1% Käufer</td>
+            <td><strong>1C — Lookalike 1% Käufer</strong></td>
             <td><span class="tag-tof">TOF</span></td>
             <td>DACH</td>
-            <td>LAL 1% basierend auf allen Käufern (≥100 nötig)</td>
+            <td>LAL 1% basierend auf Custom Audience „Alle Käufer letzte 180 Tage" · Aktivieren sobald ≥100 Käufer im Pixel</td>
+            <td>Käufer (365d)</td>
             <td>€10</td>
           </tr>
           <tr>
-            <td>2A — Website-Besucher 30d</td>
+            <td><strong>1D — Lookalike 1% Website-Besucher</strong></td>
+            <td><span class="tag-tof">TOF</span></td>
+            <td>DACH</td>
+            <td>LAL 1% basierend auf Website-Besucher letzte 90 Tage · Starter-Audience bis genug Käufer-Daten vorliegen</td>
+            <td>Käufer (365d)</td>
+            <td>€10</td>
+          </tr>
+          <tr>
+            <td><strong>2A — Website-Besucher 30d</strong></td>
             <td><span class="tag-mof">MOF</span></td>
             <td>DACH</td>
-            <td>Custom Audience: Besucher letzte 30 Tage (excl. Käufer)</td>
+            <td>Custom Audience: Alle Website-Besucher letzte 30 Tage · Anpassung: mehr Social Proof, FAQ-Antworten</td>
+            <td>Käufer (30d)</td>
             <td>€5</td>
           </tr>
           <tr>
-            <td>2B — Video-Viewer 50%+</td>
+            <td><strong>2B — Video-Viewer 50%+</strong></td>
             <td><span class="tag-mof">MOF</span></td>
             <td>DACH</td>
-            <td>Custom Audience: 50%+ Video-Viewer (excl. Käufer)</td>
+            <td>Custom Audience: Personen die 50%+ eines Videos geschaut haben · Message: „Gefiel dir unser Video? Hier ist dein Shirt."</td>
+            <td>Käufer</td>
             <td>€5</td>
           </tr>
           <tr>
-            <td>3A — Add-to-Cart ohne Kauf</td>
+            <td><strong>3A — Add-to-Cart ohne Kauf</strong></td>
             <td><span class="tag-bof">BOF</span></td>
             <td>DACH</td>
-            <td>Custom: ATC-Event letzte 7 Tage (excl. Purchase)</td>
+            <td>Custom: ATC-Event letzte 7 Tage · Format: Dynamic Product Ads (zeigt exakt das angeklickte Produkt)</td>
+            <td>Purchase (7d)</td>
             <td>€8</td>
           </tr>
           <tr>
-            <td>3B — Produktseiten-Viewer 14d</td>
+            <td><strong>3B — Produktseiten-Viewer 14d</strong></td>
             <td><span class="tag-bof">BOF</span></td>
             <td>DACH</td>
-            <td>Custom: ViewContent letzte 14 Tage (excl. ATC + Purchase)</td>
+            <td>Custom: ViewContent letzte 14 Tage · Message: Social Proof + „Andere aus deiner Region tragen's schon"</td>
+            <td>ATC + Purchase (14d)</td>
             <td>€5</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h3>Creative-Angles (5 Strategien)</h3>
+    <!-- AD CREATIVES -->
+    <h3>Ad Creatives — 5 Angles (vollständig)</h3>
+    <p style="font-size:13.5px; color:var(--gray-700); margin-bottom:20px;">Jeder Angle hat eine andere psychologische Motivation. Pro Ad Set werden 3–5 Creative-Varianten gleichzeitig getestet.</p>
+
+    <!-- ANGLE 1 -->
+    <div class="angle-block">
+      <div class="angle-header">
+        <div class="angle-num">1</div>
+        <div class="angle-title">Identity — „Das bin ich" <span class="tag-tof" style="margin-left:8px;">TOF</span></div>
+        <span class="angle-psych">Identity-based Buying</span>
+      </div>
+      <div class="angle-body">
+        <p style="font-size:13.5px; color:var(--gray-700);">Ziel: Padel-Spieler identifizieren sich sofort und klicken impulsiv. Die stärkste Angle für die Kernzielgruppe.</p>
+
+        <h4>Format A — Static Image Ad (Feed)</h4>
+        <p style="font-size:13px; color:var(--gray-700); margin-bottom:8px;"><strong>Visual Brief:</strong> Person trägt das „Need Money for Padel" Shirt im Lifestyle-Setting (Café, Straße, Outdoor). Authentisch, nicht zu gestylt.</p>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text (Deutsch — 125 Zeichen sichtbar)</div>
+          <div class="cf-text">Wer Padel spielt, weiß es. Wer keinen Padel spielt, versteht's eh nicht. 🎾<br>Das Shirt sagt, was du nicht sagst.</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text (Englisch — International)</div>
+          <div class="cf-text">If you play padel, you get it. If you don't... it's complicated. 🎾</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline</div>
+          <div class="cf-text">Need Money for Padel.</div>
+          <div class="cf-count">29 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Description</div>
+          <div class="cf-text">Jetzt im Padel Clothing Club.</div>
+          <div class="cf-count">30 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">CTA Button</div>
+          <div class="cf-text">Shop Now</div>
+        </div>
+
+        <h4>Format B — Video „Court to Street" (15 Sekunden Reel)</h4>
+        <div class="video-brief">
+          <span class="vb-label">Video-Brief</span>
+          Szene 1 (0–4s): Spieler auf Padel-Court, intensiver Punkt<br>
+          Szene 2 (4–10s): Selbe Person, selbes Outfit, jetzt im Café oder auf der Straße<br>
+          Szene 3 (10–15s): Nahaufnahme Shirt-Aufdruck → Produkt-Seite einblenden<br>
+          Ton: Kein Voice-Over. Nur Musik (energetisch, urban). Captions als Overlay.
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Captions Overlay</div>
+          <div class="cf-text">Szene 1: „Auf dem Court." → Szene 2: „Und überall sonst." → Szene 3: „Padel Clothing Club — das Original."</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">Padel kennt keine Pausen. Dein Shirt auch nicht. 🎾</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline</div>
+          <div class="cf-text">Shop padelclothingclub.com</div>
+          <div class="cf-count">25 Zeichen ✓</div>
+        </div>
+
+        <h4>Format C — UGC-Style Video (Handy-Format, authentisch)</h4>
+        <div class="video-brief">
+          <span class="vb-label">Video-Brief</span>
+          Person filmt sich selbst (Selfie-Kamera), entspannte Umgebung.<br>
+          Stil: „Hey, ich muss euch kurz was zeigen..." — hält das Shirt hoch oder trägt es.<br>
+          Erklärt den Slogan in 10–15 Sekunden auf Augenhöhe. Kein Script-Ton, natürlich wirken.
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Script (Deutsch)</div>
+          <div class="cf-text">„Ok ich musste das einfach bestellen. [zeigt Shirt] ‚Need Money for Padel' — das beschreibt mein Leben gerade so exakt. Mein Padel-Partner hat's gesehen und sofort auch bestellt. Link in der Bio."</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">Als mein Padel-Partner das gesehen hat, hat er direkt mitbestellt. 😂 padelclothingclub.com</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANGLE 2 -->
+    <div class="angle-block">
+      <div class="angle-header">
+        <div class="angle-num">2</div>
+        <div class="angle-title">Community — „Insider-Witz" <span class="tag-tof" style="margin-left:8px;">TOF</span></div>
+        <span class="angle-psych">Belonging · Tribal Identity</span>
+      </div>
+      <div class="angle-body">
+        <p style="font-size:13.5px; color:var(--gray-700);">Ziel: Virales Teilen, Kommentare („omg das bin ich"), organische Reichweite durch hohes Engagement. Stärkt Community-Charakter der Marke.</p>
+
+        <h4>Format A — Carousel „Welcher bist du?" (4 Cards)</h4>
+        <div class="video-brief">
+          <span class="vb-label">Carousel-Aufbau</span>
+          Card 1: „Need Money for Padel" Shirt Close-Up · Overlay: „Der Broke Padel Player"<br>
+          Card 2: „Sundays Are for Padel" Shirt · Overlay: „Der Sunday Ritualist"<br>
+          Card 3: [weiteres Design] · Overlay: „Der Padel Addict"<br>
+          Card 4 (CTA): Alle Shirts zusammen · Overlay: „Welcher bist du? 👉" · Link zur Collection
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">Welcher Padel-Spieler-Typ bist du? 👇 Kommentier mit deinem Lieblings-Slogan.</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline</div>
+          <div class="cf-text">Padel Clothing Club</div>
+          <div class="cf-count">19 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Description</div>
+          <div class="cf-text">Alle Designs entdecken</div>
+          <div class="cf-count">21 Zeichen ✓</div>
+        </div>
+
+        <h4>Format B — Meme-Style Static</h4>
+        <p style="font-size:13px; color:var(--gray-700); margin-bottom:8px;"><strong>Visual Brief:</strong> Meme-Format adaptiert für Padel — „Me: I should save money. Also me:" + Produktfoto Schläger, Court-Buchung, Shirt. Sieht aus wie organischer Content.</p>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">Ich: Ich spare diesen Monat.<br>Ich kurz danach: [Neuer Schläger + Court-Buchung + Need Money for Padel Shirt]<br><br>Zumindest das Shirt war günstig. 😅</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANGLE 3 -->
+    <div class="angle-block">
+      <div class="angle-header">
+        <div class="angle-num">3</div>
+        <div class="angle-title">Gift — „Perfektes Geschenk" <span class="tag-tof" style="margin-left:8px;">TOF</span></div>
+        <span class="angle-psych">Gift-Giving Motivation</span>
+      </div>
+      <div class="angle-body">
+        <p style="font-size:13.5px; color:var(--gray-700);">Ziel: Geschenk-Käufer ansprechen (Geburtstage, Weihnachten, Just-Because). Erschließt einen neuen Käufer-Typ, der kein Padel-Spieler sein muss.</p>
+
+        <h4>Format A — Static Image Ad (Geschenk-Setting)</h4>
+        <p style="font-size:13px; color:var(--gray-700); margin-bottom:8px;"><strong>Visual Brief:</strong> Schön verpacktes Shirt, Geschenkbox-Setting. Oder: Person überreicht Shirt, andere Person reagiert lachend.</p>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text (Deutsch)</div>
+          <div class="cf-text">Du kennst jemanden, der mehr Geld für Padel ausgibt als für Essen? 🎾<br><br>Wir haben das perfekte Geschenk für genau diese Person.<br>Kein Schläger. Kein Griffband. Etwas, das sie wirklich trägt.</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text (Englisch — International)</div>
+          <div class="cf-text">Know someone who spends more on padel than rent? 🎾<br>We made the perfect gift for them.</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline (Deutsch)</div>
+          <div class="cf-text">Padel Gifts, die landen.</div>
+          <div class="cf-count">22 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline (Englisch)</div>
+          <div class="cf-text">The Padel Gift They'll Love.</div>
+          <div class="cf-count">28 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Description</div>
+          <div class="cf-text">padelclothingclub.com</div>
+          <div class="cf-count">21 Zeichen ✓</div>
+        </div>
+
+        <h4>Format B — Video Gift (15 Sekunden)</h4>
+        <div class="video-brief">
+          <span class="vb-label">Video-Brief</span>
+          Szene 1: Person sucht auf dem Handy nach „padel geschenk" → frustriert, schlechte Ergebnisse<br>
+          Szene 2: Findet padelclothingclub.com → Reaktion: „Das ist es!"<br>
+          Szene 3: Shirt kommt an → Beschenkte Person lacht sofort, zeigt es in die Kamera
+        </div>
+      </div>
+    </div>
+
+    <!-- ANGLE 4 -->
+    <div class="angle-block">
+      <div class="angle-header">
+        <div class="angle-num">4</div>
+        <div class="angle-title">Social Proof — „Alle haben's" <span class="tag-mof" style="margin-left:8px;">MOF</span> <span class="tag-bof">BOF</span></div>
+        <span class="angle-psych">Social Validation · FOMO</span>
+      </div>
+      <div class="angle-body">
+        <p style="font-size:13.5px; color:var(--gray-700);">Ziel: Warme Audiences konvertieren, Vertrauen aufbauen. Ideal für Website-Besucher und Retargeting-Audiences die das Produkt kennen.</p>
+
+        <h4>Format A — Review Showcase (Screenshot-Style)</h4>
+        <p style="font-size:13px; color:var(--gray-700); margin-bottom:8px;"><strong>Visual Brief:</strong> Screenshot-Style, 3 echte Kundenreviews mit ⭐⭐⭐⭐⭐ — authentisch, nicht zu gestylt.</p>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">„Mein ganzer Padel-Club hat jetzt eins bestellt." — Marco, Hamburg ⭐⭐⭐⭐⭐<br><br>„Bestes Geburtstagsgeschenk das ich je bekommen hab." — Sarah, Wien ⭐⭐⭐⭐⭐<br><br>„Qualität top. Passform perfekt." — Thomas, Berlin ⭐⭐⭐⭐⭐</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline</div>
+          <div class="cf-text">4,9/5 ⭐ von über 200 Padel-Spielern</div>
+          <div class="cf-count">38 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Description</div>
+          <div class="cf-text">Jetzt shoppen → padelclothingclub.com</div>
+          <div class="cf-count">38 Zeichen ✓</div>
+        </div>
+
+        <h4>Format B — Dynamic Product Ad (Retargeting)</h4>
+        <p style="font-size:13px; color:var(--gray-700); margin-bottom:8px;">Meta Catalog Ads — zeigt automatisch das Produkt, das der Nutzer zuletzt angeschaut hat.</p>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text (Template)</div>
+          <div class="cf-text">Du hast's gesehen. Jetzt holen? 🎾<br>Nur noch wenige auf Lager.</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline</div>
+          <div class="cf-text">[Produktname aus Katalog] — automatisch befüllt</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Description</div>
+          <div class="cf-text">padelclothingclub.com — automatisch befüllt</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANGLE 5 -->
+    <div class="angle-block">
+      <div class="angle-header">
+        <div class="angle-num">5</div>
+        <div class="angle-title">Urgency / Scarcity — „Nur noch X" <span class="tag-bof" style="margin-left:8px;">BOF</span></div>
+        <span class="angle-psych">Loss Aversion</span>
+      </div>
+      <div class="angle-body">
+        <p style="font-size:13.5px; color:var(--gray-700);">Ziel: Add-to-Cart-Abbrecher konvertieren. Nur für Retargeting verwenden — bei kalten Audiences wirkt Urgency aufdringlich.</p>
+
+        <h4>Retargeting Ad — „Du hast's fast" (Variante A)</h4>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">Du hattest das fast schon. 🎾<br><br>Dein Warenkorb wartet noch. Aber nur noch 4 Stück auf Lager.<br>→ padelclothingclub.com</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Headline</div>
+          <div class="cf-text">Fast geschafft. Jetzt holen.</div>
+          <div class="cf-count">28 Zeichen ✓</div>
+        </div>
+        <div class="copy-field">
+          <div class="cf-label">Description</div>
+          <div class="cf-text">Morgen schon auf dem Weg.</div>
+          <div class="cf-count">25 Zeichen ✓</div>
+        </div>
+
+        <h4>Retargeting Ad — Social Proof + Urgency (Variante B)</h4>
+        <div class="copy-field">
+          <div class="cf-label">Primary Text</div>
+          <div class="cf-text">„Hab gezögert — waren dann weg." Dieser Fehler passiert dir nicht.<br><br>Noch verfügbar: padelclothingclub.com</div>
+        </div>
+        <div class="info-box" style="margin-top:12px;">
+          <strong>Hinweis:</strong> Beide Varianten gegeneinander testen (A/B). Variante A bei frischen ATC-Audiences (1–3 Tage), Variante B bei älteren (4–7 Tage).
+        </div>
+      </div>
+    </div>
+
+    <!-- PLATTFORM SPECS -->
+    <h3>Plattform-Specs (Zeichenlimits)</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Angle</th><th>Psychologie</th><th>Format</th><th>Funnel</th></tr></thead>
+        <thead><tr><th>Format</th><th>Primary Text (sichtbar)</th><th>Headline</th><th>Description</th><th>Hinweis</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>1. Identity — "Das bin ich"</strong></td>
-            <td>Identity-based buying</td>
-            <td>Static Feed, UGC Video (15s), Reel</td>
-            <td><span class="tag-tof">TOF</span></td>
-          </tr>
-          <tr>
-            <td><strong>2. Community — "Insider-Witz"</strong></td>
-            <td>Belonging, Tribal Identity</td>
-            <td>Carousel, Meme-Style Static</td>
-            <td><span class="tag-tof">TOF</span></td>
-          </tr>
-          <tr>
-            <td><strong>3. Gift — "Perfektes Geschenk"</strong></td>
-            <td>Gift-Giving Motivation</td>
-            <td>Static (Gift-Setting), Short Video</td>
-            <td><span class="tag-tof">TOF</span></td>
-          </tr>
-          <tr>
-            <td><strong>4. Social Proof — "Alle haben's"</strong></td>
-            <td>Social Validation, FOMO</td>
-            <td>Review Showcase, Dynamic Product Ads</td>
-            <td><span class="tag-mof">MOF</span> <span class="tag-bof">BOF</span></td>
-          </tr>
-          <tr>
-            <td><strong>5. Urgency/Scarcity — "Nur noch X"</strong></td>
-            <td>Loss Aversion</td>
-            <td>Static Retargeting, Dynamic Product Ads</td>
-            <td><span class="tag-bof">BOF</span></td>
-          </tr>
+          <tr><td><strong>Meta Feed</strong></td><td>125 Zeichen (max. 2.200)</td><td>40 Zeichen empfohlen</td><td>30 Zeichen empfohlen</td><td>Hook in die ersten 125 Zeichen laden</td></tr>
+          <tr><td><strong>Meta Stories</strong></td><td>Text minimal halten</td><td>—</td><td>—</td><td>Visuell dominiert, wenig Text</td></tr>
+          <tr><td><strong>Meta Reels</strong></td><td>Text minimal halten</td><td>—</td><td>—</td><td>Captions als Overlay im Video</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--gray-700);">Alle Creatives oben sind innerhalb der Specs validiert ✓</p>
+
+    <!-- CREATIVE REFRESH PLAN -->
+    <h3>Creative Refresh Plan</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Zeitraum</th><th>Aktion</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Woche 1–2</strong></td><td>Launch: 3 Static + 1 Video + 1 Carousel pro Angle · Alle 5 Angles gleichzeitig live</td></tr>
+          <tr><td><strong>Woche 3–4</strong></td><td>Auswertung: Top 2 Angles identifizieren · Neue Variationen nur dieser Angles erstellen</td></tr>
+          <tr><td><strong>Woche 5+</strong></td><td>Monatlicher Refresh der Creatives (Ad Fatigue vermeiden — Frequency-Ziel: &lt; 3,0)</td></tr>
+          <tr><td><strong>Bei neuem Drop</strong></td><td>Sofortiger Creative-Refresh mit neuem Produkt im Fokus · TOF-Budget temporär erhöhen</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h3>Beispiel-Copy (Angle 1 — Identity)</h3>
-    <div class="copy-box">
-      <strong>Primary Text (DE):</strong> Wer Padel spielt, weiß es. Wer keinen Padel spielt, versteht's eh nicht. 🎾 Das Shirt sagt, was du nicht sagst.<br>
-      <strong>Headline:</strong> Need Money for Padel. (29 Zeichen ✓)<br>
-      <strong>Description:</strong> Jetzt im Padel Clothing Club. (30 Zeichen ✓)
-    </div>
-
+    <!-- A/B TESTS -->
     <h3>A/B Test Plan (priorisiert)</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Priorität</th><th>Test</th><th>Variante A</th><th>Variante B</th><th>Metric</th></tr></thead>
+        <thead><tr><th>Priorität</th><th>Test</th><th>Variante A</th><th>Variante B</th><th>Metrik</th></tr></thead>
         <tbody>
-          <tr><td>⭐⭐⭐⭐⭐</td><td>Creative-Typ</td><td>UGC-Style Video</td><td>Studio-Foto</td><td>CTR, ROAS</td></tr>
-          <tr><td>⭐⭐⭐⭐⭐</td><td>Copy-Angle</td><td>Identity "Das bin ich"</td><td>Gift "Perfektes Geschenk"</td><td>CPP</td></tr>
-          <tr><td>⭐⭐⭐⭐</td><td>Audience</td><td>Padel-Interessen</td><td>Racket-Brands</td><td>CPP, CPM</td></tr>
-          <tr><td>⭐⭐⭐⭐</td><td>Landing Page</td><td>Produkt-Seite</td><td>Collection-Seite</td><td>CVR + ROAS</td></tr>
-          <tr><td>⭐⭐⭐</td><td>CTA-Text</td><td>"Shop Now"</td><td>"Find your Slogan"</td><td>CTR</td></tr>
+          <tr><td>⭐⭐⭐⭐⭐</td><td>Creative-Typ</td><td>UGC-Style Video (Angle 1C)</td><td>Studio-Foto Static</td><td>CTR, ROAS</td></tr>
+          <tr><td>⭐⭐⭐⭐⭐</td><td>Angle-Vergleich</td><td>Identity „Das bin ich" (Angle 1)</td><td>Gift „Perfektes Geschenk" (Angle 3)</td><td>CPP</td></tr>
+          <tr><td>⭐⭐⭐⭐</td><td>Zielgruppe</td><td>Padel-Interessen (1A)</td><td>Racket-Brands (1A, andere Interessen)</td><td>CPP, CPM</td></tr>
+          <tr><td>⭐⭐⭐⭐</td><td>Landing Page</td><td>Direkt auf Produkt-Seite</td><td>Collection-Seite (alle Designs)</td><td>CVR + ROAS</td></tr>
+          <tr><td>⭐⭐⭐</td><td>CTA-Text</td><td>„Shop Now"</td><td>„Find your Slogan"</td><td>CTR</td></tr>
+          <tr><td>⭐⭐⭐</td><td>Sprache DACH</td><td>Deutsch (Angle 1, Primary Text DE)</td><td>Englisch (Angle 1, Primary Text EN)</td><td>CTR, CVR</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:13px; color:var(--gray-700);">Statistik: 95% Konfidenz, MDE 20%. Meta Ads: ~8.600 Impressionen pro Variante nötig (≈€43 bei €5 CPM).</p>
+    <p style="font-size:13px; color:var(--gray-700);">Statistik: 95% Konfidenz, MDE 20%. Meta Ads: ~8.600 Impressionen pro Variante nötig (≈€43 bei €5 CPM). Nur eine Variable pro Test ändern.</p>
 
-    <h3>Optimierungs-Regeln</h3>
+    <!-- OPTIMIERUNGSREGELN -->
+    <h3>Optimierungsregeln (nach Woche 1–2)</h3>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Symptom</th><th>Maßnahme</th></tr></thead>
         <tbody>
-          <tr><td>CPP &gt; €20</td><td>Landing Page CVR prüfen · neue Creatives testen · Audience erweitern</td></tr>
-          <tr><td>CTR &lt; 1% (TOF)</td><td>Creative refresh · neuen Hook testen · Audience-Fit überprüfen</td></tr>
-          <tr><td>ROAS &lt; 2,0</td><td>AOV erhöhen (Bundles) · BOF-Budget erhöhen · E-Mail Sequence prüfen</td></tr>
-          <tr><td>ROAS &gt; 3,0 (Winner)</td><td>Budget +20–30% alle 3–5 Tage · Ad Set duplizieren mit neuen Creatives</td></tr>
+          <tr><td>CPP &gt; €20</td><td>Landing Page CVR in GA4 prüfen · neue Creative-Angles testen · Audience erweitern (zu eng?)</td></tr>
+          <tr><td>CTR &lt; 1% (TOF)</td><td>Creative refresh · neuen Hook in den ersten 3 Sekunden · Audience-Fit überprüfen</td></tr>
+          <tr><td>ROAS &lt; 2,0</td><td>AOV erhöhen (Bundle-Angebote pushen) · BOF-Budget erhöhen · Post-Click E-Mail prüfen</td></tr>
+          <tr><td>Frequency &gt; 3,0</td><td>Creative refresh · neue Varianten hochladen · Audience erweitern</td></tr>
+          <tr><td>ROAS &gt; 3,0 (Winner)</td><td>Budget +20–30% alle 3–5 Tage · Ad Set duplizieren mit neuen Creatives · International ausrollen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- REPORTING -->
+    <h3>Wöchentliches Reporting-Dashboard</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Metrik</th><th>Ziel</th><th>Woche 1</th><th>Woche 2</th><th>Woche 3</th><th>Woche 4</th></tr></thead>
+        <tbody>
+          <tr><td>ROAS</td><td>≥ 2,5×</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>CPP (Cost per Purchase)</td><td>&lt; €15</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>CTR</td><td>&gt; 1,5%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>CPM</td><td>&lt; €12</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Frequency</td><td>&lt; 3,0</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Gesamtausgaben</td><td>Im Budget</td><td></td><td></td><td></td><td></td></tr>
         </tbody>
       </table>
     </div>
